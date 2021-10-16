@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<!-- saved from url=(0070)https://bit.webduino.io/blockly/live-preview.html#-Mm63gFGe_uM-cvHGgH1 -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Webduino Blockly Demo 02</title>
+  <script src="./index_files/jquery.min.js.下載"></script>
+  <script src="./index_files/webduino-all.min.js.下載"></script>
+  <script src="./index_files/MessageTransport.min.js.下載"></script>
+  <script src="./index_files/webduino-blockly.min.js.下載"></script>
+  <script src="./index_files/firebase.min.js.下載"></script>
+  <script src="./index_files/runtime.min.js.下載"></script><script src="./index_files/BitLedMatrix-blockly.js.下載"></script><script src="./index_files/BitLedMatrix.js.下載"></script><script src="./index_files/BitButton.js.下載"></script><script src="./index_files/BitButton-blockly.js.下載"></script>
+
+  <style>#demo-area-02-light img {
+  height: 200px;
+  display: none;
+  pointer-events: auto!important;
+}
+
+#demo-area-02-light.on #demo-area-02-on {
+  display: inline-block;
+  pointer-events: auto!important;
+}
+
+#demo-area-02-light.off #demo-area-02-off {
+  display: inline-block;
+  pointer-events: auto!important;
+}</style>
+</head>
+
+<body>
+  <div><div id="demo-area-02-light" class="off">
+    <img src="./index_files/off.jpg" id="demo-area-02-off">
+    <img src="./index_files/on.jpg" id="demo-area-02-on">
+  </div></div>
+
+  <script>var matrix;
+var button;
+var button2;
+
+
+boardReady({board: 'Bit', device: 'bit848e3', transport: 'mqtt'}, function (board) {
+  board.samplingInterval = 250;
+  matrix = getMatrix(board, 4, 25);
+  document.getElementById("demo-area-02-light").addEventListener("click", function(){
+    if (document.getElementById("demo-area-02-light").className == "on") {
+       document.getElementById("demo-area-02-light").className = "off";
+    } else {
+      document.getElementById("demo-area-02-light").className = "on";
+    }
+    if (document.getElementById("demo-area-02-light").className == "on") {
+      matrix.setColor("000000000133ccff0233ccff0333ccff04000000050000000633ccff0733ccff0833ccff090000000a0000000b0000000c33ccff0d0000000e0000000f33ccff1033ccff1133ccff1233ccff1333ccff14000000150000001633ccff1700000018000000");
+    }
+    if (document.getElementById("demo-area-02-light").className == "off") {
+      matrix.setString("000000000100000002ff00000300000004ff000005000000060000000700000008ff0000090000000aff00000bff00000cff00000d0000000eff00000fff00001000000011ff0000120000001300000014ff000015ff000016ff00001700000018000000", '#ff0000', 1);
+    }
+  });
+});
+
+matrix.setColor("00ffffff01ff666602ff990003ffcc33049999000533cc000666cccc0766ffff08ccccff09ff99ff0a9999000b0066000c3399990d3366ff0e6666cc0fffcc331033ff331133ff331233ff331399990014ff990015ff666616ffcccc17ffcc9918ffff33");
+
+button = getPullupButton(board, 35);
+button2 = getPullupButton(board, 27);
+button.on('pressed', function () {
+});
+button2.on('pressed', function () {
+});
+
+matrix.setColor("000000000100000002ff00000300000004ff000005000000060000000700000008ff0000090000000aff00000bff00000cff00000d0000000eff00000fff00001000000011ff0000120000001300000014ff000015ff000016ff00001700000018000000");
+
+document.getElementById("demo-area-02-light").addEventListener("click", function(){
+});
+
+'HI';
+</script>
+
+
+</body></html>
